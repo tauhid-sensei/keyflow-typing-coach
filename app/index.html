@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KeyFlow Typing Coach</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">K</span><div><b>KEYFLOW</b><small>TYPING COACH</small></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <button class="nav active" data-view="practice"><span>⌨</span> Practice</button>
+    <button class="nav" data-view="course"><span>✦</span> Typing course</button>
+    <button class="nav" data-view="progress"><span>↗</span> My progress</button>
+    <button class="nav" data-view="coach"><span>✧</span> AI coach</button>
+    <div class="sidebar-bottom"><div class="status-dot"></div><div><b>Local workspace</b><small>Practice data stays in this browser</small></div></div>
+  </aside>
+  <main class="main">
+    <header><div><div class="eyebrow">YOUR PERSONAL TYPING STUDIO</div><h1 id="page-title">Practice makes progress.</h1><p id="page-subtitle">Build speed without sacrificing accuracy.</p></div><button class="settings-button" id="open-settings">⚙ Settings</button></header>
+    <section id="view-practice" class="view">
+      <div class="mode-switch"><button class="mode active" data-mode="speed">Speed training <small>Test and improve</small></button><button class="mode" data-mode="learn">Accuracy mode <small>Technique first</small></button></div>
+      <div class="stats">
+        <div class="stat"><span>WPM</span><strong id="wpm">0</strong><small>Words per minute</small></div>
+        <div class="stat"><span>ACCURACY</span><strong id="accuracy">100%</strong><small>Correct keystrokes</small></div>
+        <div class="stat"><span>TIME</span><strong id="time">00:00</strong><small>Elapsed time</small></div>
+        <div class="stat"><span>ERRORS</span><strong id="errors">0</strong><small>Current mistakes</small></div>
+      </div>
+      <div class="practice-card">
+        <div class="card-top"><div><span class="pill" id="mode-pill">SPEED SESSION</span><h2 id="exercise-title">Find your rhythm</h2></div><div class="select-wrap"><label for="difficulty">TEXT LEVEL</label><select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Intermediate</option><option value="hard">Advanced</option></select></div></div>
+        <div id="prompt" class="prompt" aria-label="Text to type"></div>
+        <textarea id="typing-input" placeholder="Click here and start typing…" spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+        <div class="practice-footer"><span id="hint">Tip: relax your shoulders and keep your eyes on the text.</span><div class="actions"><button class="button-quiet" id="reset">↻ Restart</button><button class="button-primary" id="new-text">New text ↗</button></div></div>
+      </div>
+      <div class="feedback-grid"><div class="panel"><div class="panel-heading"><div><span class="mini-icon">⌁</span><b>Live feedback</b></div><span class="live-tag">LIVE MONITOR</span></div><p id="feedback">Start typing to see your accuracy and progress here.</p><div class="progress-track"><div id="progress-bar"></div></div><small id="progress-label">0% completed</small></div>
+      <div class="panel"><div class="panel-heading"><div><span class="mini-icon">✦</span><b>Coach's note</b></div></div><p id="coach-note">Accuracy comes first. Speed follows when your fingers learn the path.</p><button class="text-button" id="ask-coach">Get personalized AI advice →</button></div></div>
+    </section>
+    <section id="view-course" class="view hidden">
+      <div class="hero-panel"><span class="pill">STRUCTURED COURSE</span><h2>From first keystroke to confident touch typing.</h2><p>100 focused lessons from beginner to advanced. Follow the skill path in order, or search and filter lessons. You do not need to finish every lesson to improve: consistent practice and accuracy matter most.</p><div class="course-summary"><strong id="course-complete">0 / 100</strong><span>lessons completed</span><div class="progress-track"><div id="course-bar"></div></div></div></div>
+      <div class="course-tools"><input id="lesson-search" type="search" placeholder="Search 100 lessons…" aria-label="Search lessons"><select id="lesson-filter" aria-label="Filter lessons"><option value="ALL">All levels</option><option value="BEGINNER">Beginner</option><option value="INTERMEDIATE">Intermediate</option><option value="ADVANCED">Advanced</option><option value="DONE">Completed</option><option value="TODO">Not completed</option></select></div><div id="lesson-list" class="lesson-list"></div><div class="course-pagination"><button class="button-quiet" id="lesson-prev">← Previous</button><span id="lesson-page-label">Page 1</span><button class="button-quiet" id="lesson-next">Next →</button></div>
+      <div class="panel lesson-workspace"><div class="panel-heading"><div><span class="mini-icon">⌨</span><b id="lesson-title">Lesson 1: Home row</b></div><span class="live-tag" id="lesson-level">BEGINNER</span></div><p id="lesson-description">Rest your fingers on the home row.</p><div class="keyboard-visual" id="lesson-keys"></div><div class="drill-text" id="lesson-drill">asdf jkl;</div><textarea id="drill-input" placeholder="Type the drill here…" spellcheck="false"></textarea><div class="drill-meta"><span id="drill-result" class="muted">Accuracy feedback appears here.</span><button class="button-primary" id="complete-lesson" disabled>Complete lesson →</button></div></div>
+    </section>
+    <section id="view-progress" class="view hidden">
+      <div class="stats"><div class="stat"><span>BEST WPM</span><strong id="best-wpm">0</strong><small>Personal best</small></div><div class="stat"><span>SESSIONS</span><strong id="sessions">0</strong><small>Completed practices</small></div><div class="stat"><span>AVG ACCURACY</span><strong id="avg-accuracy">—</strong><small>Across saved sessions</small></div><div class="stat"><span>TOTAL ERRORS</span><strong id="total-errors">0</strong><small>Errors caught</small></div></div>
+      <div class="panel"><div class="panel-heading"><b>Your recent sessions</b><button id="clear-progress" class="text-button danger">Clear history</button></div><div id="history" class="history-empty">Finish a practice session to start building your progress history.</div></div>
+      <div class="panel"><div class="panel-heading"><b>What to focus on next</b></div><p id="progress-advice">Your first goal: type accurately and build a steady rhythm. Your results will reveal what to train next.</p></div>
+    </section>
+    <section id="view-coach" class="view hidden">
+      <div class="hero-panel coach-hero"><span class="pill">AI TYPING COACH</span><h2>Get advice that fits your mistakes.</h2><p>For a better, more personalized coaching experience, add your AI provider API key in Settings. Built-in typing tips are available even without a key.</p></div>
+      <div class="panel"><div class="panel-heading"><b>Ask your coach</b><span class="live-tag" id="ai-status">BUILT-IN MODE</span></div><textarea id="coach-question" class="question-input" placeholder="Example: How can I stop making mistakes when typing quickly?"></textarea><button class="button-primary" id="send-coach">Ask AI coach →</button><div id="coach-answer" class="coach-answer">Your coach will consider your speed, accuracy, and common mistakes.</div></div>
+      <div class="panel"><div class="panel-heading"><b>Quick coaching prompts</b></div><div class="prompt-chips"><button data-question="Give me a 7-day beginner touch-typing plan.">7-day learning plan</button><button data-question="Give me drills to improve accuracy without looking at my keyboard.">Accuracy drills</button><button data-question="How should I increase my WPM without creating more errors?">Increase WPM</button></div></div>
+    </section>
+    <footer>KEYFLOW TYPING COACH <span>Small improvements. Every session.</span></footer>
+  </main>
+</div>
+<div id="pin-welcome-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pin-welcome-title"><div class="modal-card"><div class="modal-heading"><div><span class="eyebrow">QUICK SETUP</span><h2 id="pin-welcome-title">Pin KeyFlow for quick access</h2></div><button class="close-button" id="close-pin-welcome" aria-label="Close">×</button></div><p style="color:#aebbd0;line-height:1.7">Your browser does not let extensions pin themselves automatically. Pin KeyFlow once and it will stay in your toolbar.</p><ol style="color:#d3dced;line-height:1.9;padding-left:22px"><li>Click the <b>Extensions</b> puzzle icon near the browser address bar.</li><li>Find <b>KeyFlow Typing Coach</b>.</li><li>Click the pin icon next to it.</li></ol><p class="settings-note">Chrome, Edge and Brave: use the puzzle icon. Firefox: open the extensions menu and choose “Pin to Toolbar” if available.</p><div class="modal-actions"><button class="button-quiet" id="dismiss-pin-welcome">Maybe later</button><button class="button-primary" id="done-pin-welcome">Got it</button></div></div></div>
+<div id="settings-modal" class="modal hidden"><div class="modal-card"><div class="modal-heading"><div><span class="eyebrow">PREFERENCES</span><h2>Settings</h2></div><button class="close-button" id="close-settings">×</button></div>
+<label class="field-label" for="api-provider">AI provider</label><select id="api-provider"><option value="openai">OpenAI API</option><option value="openrouter">OpenRouter</option><option value="groq">Groq</option><option value="google">Google Gemini (native API)</option><option value="custom">Custom OpenAI-compatible API</option></select>
+<label class="field-label" for="api-key">API key</label><input id="api-key" type="password" placeholder="Paste your API key" autocomplete="off">
+<label class="field-label" for="api-endpoint">API base URL</label><input id="api-endpoint" type="url" placeholder="https://api.openai.com/v1">
+<label class="field-label" for="api-model">Model name</label><input id="api-model" type="text" placeholder="gpt-4o-mini">
+<p class="settings-note">Your key is saved in this browser extension's local storage and sent to the configured provider only when you request AI advice. API usage may cost money. Browser based API calls may be blocked by some providers' CORS policies. Do not use a shared PC profile. For stronger key protection, use a local backend.</p>
+<div class="modal-actions"><button class="button-quiet" id="remove-key">Remove key</button><button class="button-primary" id="save-settings">Save settings</button></div><div id="settings-message" class="muted"></div></div></div>
+<script src="app.js"></script>
+</body></html>

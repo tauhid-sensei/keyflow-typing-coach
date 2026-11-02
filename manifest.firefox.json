@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "KeyFlow Typing Coach",
+  "version": "1.0.0",
+  "description": "100 focused lessons, randomized practice passages capped at 50 words, and optional AI coaching with model fallback.",
+  "permissions": [
+    "storage"
+  ],
+  "browser_action": {
+    "default_title": "Open KeyFlow Typing Coach"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}
