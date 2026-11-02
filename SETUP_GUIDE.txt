@@ -1,0 +1,36 @@
+KEYFLOW TYPING COACH 1.0.0
+SETUP GUIDE (Windows)
+========================================
+
+CHROME / MICROSOFT EDGE / BRAVE
+1. Extract this ZIP file to a folder you can find easily.
+2. Open your browser's extensions page:
+   Chrome: chrome://extensions
+   Edge: edge://extensions
+   Brave: brave://extensions
+3. Turn on Developer mode.
+4. Click Load unpacked.
+5. Select the extracted project folder that contains manifest.json.
+6. Open the extension from the browser toolbar. If you do not see it, open the Extensions menu and pin it.
+
+FIREFOX
+1. In the extracted project folder, make a copy of manifest.firefox.json named manifest.json in a separate Firefox build folder. Do not overwrite the Chromium manifest if you still need it.
+2. Open about:debugging#/runtime/this-firefox
+3. Click Load Temporary Add-on.
+4. Select the Firefox build's manifest.json.
+Note: temporary Firefox add-ons may be removed when Firefox restarts. A signed, packaged release is needed for normal distribution.
+
+AI COACH SETUP
+1. Open the extension's Settings / AI settings.
+2. Choose a supported AI provider.
+3. Enter your own provider API key and a model supported by your account.
+4. Save settings and test the AI coach.
+5. Never share your API key or commit it to GitHub. API availability, model access, quotas, and network restrictions can affect AI features. Built-in typing practice should remain usable if AI is unavailable.
+
+TROUBLESHOOTING
+- If the extension does not load, make sure you selected the folder containing manifest.json.
+- If AI fails, verify the provider, API key, endpoint, model name, quota, and internet connection.
+- Do not assume every AI model or provider is available in every region or account.
+- This guide does not guarantee that every browser/provider combination has been tested.
+
+PROJECT VERSION: 1.0.0

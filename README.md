@@ -39,3 +39,16 @@ Open Settings, select a provider, enter an API key, endpoint, and model. Provide
 
 
 Version 1.0.0 includes: practice passages are strictly capped at 50 words; Gemini requests attempt model discovery and retry a limited number of alternate Flash models after overload/unavailable responses; a one-time toolbar pinning guide opens after install. Browsers do not allow extensions to pin themselves automatically.
+
+
+## GitHub tips for contributors
+
+- **Report bugs:** Open an Issue and include your browser, operating system, steps to reproduce, and the exact error message. Never include API keys or other secrets.
+- **Suggest features:** Open an Issue describing the problem and the proposed improvement before making large changes.
+- **Contribute code:** Fork the repository, create a focused branch, make a small change, test it locally, and open a Pull Request explaining what changed.
+- **Protect secrets:** Never commit API keys, tokens, passwords, personal settings, or private data. If a key is exposed, revoke it with the provider immediately; deleting it from a later commit may not remove it from Git history.
+- **Keep changes focused:** Avoid unrelated formatting changes and describe any browser-specific limitations.
+- **Versioning:** Use tags such as `v1.0.0` for releases and update the changelog when publishing future versions.
+- **Testing:** Test the extension in the target browser before claiming compatibility. AI features depend on provider availability, model access, API quotas, and network conditions.
+
+See `SETUP_GUIDE.txt` for local installation and AI setup instructions.
